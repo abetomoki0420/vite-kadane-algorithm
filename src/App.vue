@@ -8,12 +8,14 @@ const sizeIncrement = () => {
   if (!isIncrementable(size.value)) return
 
   size.value++
+  execute()
 }
 
 const sizeDecrement = () => {
   if (!isDecrementable(size.value)) return
 
   size.value--
+  execute()
 }
 
 const isIncrementable = (v: number) => {
@@ -95,14 +97,23 @@ execute()
     </div>
 
     <div class="flex gap-2 overflow-x-scroll mt-2">
-      <div
-        v-for="(num, index) in nums"
-        :key="index"
-        class="h-10 w-10 p-2 border rounded-md transition duration-300"
-        :class="innerCalc(index)"
-      >
-        <div>{{ num }}</div>
-        <div class="mt-2">[{{ index }}]</div>
+      <div v-for="(num, index) in nums" :key="index">
+        <div
+          class="
+            h-10
+            w-10
+            p-2
+            border
+            rounded-md
+            transition
+            duration-300
+            text-center
+          "
+          :class="innerCalc(index)"
+        >
+          {{ num }}
+        </div>
+        <div class="mt-2 text-center">[{{ index }}]</div>
       </div>
     </div>
   </h1>
